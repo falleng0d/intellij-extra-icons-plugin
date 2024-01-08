@@ -8,6 +8,8 @@
 :warning: **2024-01-08 update**: Some people decided to distribute my plugin with license requirement removed, without having the decency to tell me about it. No acknowledgement, simply a total lack of respect, while I allowed users to support me financially only if they wished to. I am working hard on this plugin since 2018, allowing users to explore the code and optionally support my work. So I had to make the difficult decision to stop distributing the source code. You can still access old code's history. *Well played...*. :warning:  
 **You can still open issues and discusions**.
 
+---
+
 Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.  
 You can also register your own icons in order to override file icons, but also all [IDE icons](https://jetbrains.design/intellij/resources/icons_list/) (including toolbars, menus, etc.). It works with all JetBrains products like IntelliJ (ultimate and community), PyCharm, WebStorm, DataGrip, etc.  
 To get started with this plugin, please see this [guide](docs/GET_STARTED.md).
