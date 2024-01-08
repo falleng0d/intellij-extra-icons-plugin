@@ -6,7 +6,7 @@
 </p>
 
 :warning: **2024-01-08 update**: Some people decided to distribute my plugin with license requirement removed, without having the decency to tell me about it. No acknowledgement, simply a total lack of respect, while I allowed users to support me financially only if they wished to. I am working hard on this plugin since 2018, allowing users to explore the code and optionally support my work. So I had to make the difficult decision to stop distributing the source code. You can still access old code's history. *Well played...*. :warning:  
-**You can still open issues and discusions**.
+**You can still open issues and discussions**.
 
 ---
 
