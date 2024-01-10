@@ -1,1 +1,1 @@
-Please see https://plugins.jetbrains.com/plugin/11058-extra-icons/eula
+Moved to https://plugins.jetbrains.com/plugin/11058-extra-icons/eula

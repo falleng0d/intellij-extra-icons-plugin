@@ -1,5 +1,9 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine/)
 
+<h1 align="center">
+    Extra Icons
+</h1>
+
 <p align="center">
     <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons"><img alt="plugin's version" src="https://img.shields.io/jetbrains/plugin/v/11058-extra-icons.svg"/></a>
     <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons"><img alt="plugin's downloads" src="https://img.shields.io/jetbrains/plugin/d/11058-extra-icons.svg"/></a>
