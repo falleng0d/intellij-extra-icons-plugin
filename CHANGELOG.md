@@ -6,6 +6,7 @@
 * internal: replace some custom dialogs by standard IntelliJ dialogs.
 * internal: code refactorings, improve stability and maintainability.
 * internal: improvements to the plugin build script.
+* plugin description: fix link to Gateway support online documentation.
 
 ## 2024.2.2 (2024/01/18)
 * fix `java.lang.IllegalArgumentException: Illegal character in path at index 8` errors when loading user icons with IntelliJ 2024.1 EAP on Windows.
