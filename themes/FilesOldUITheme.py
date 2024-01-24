@@ -10,10 +10,10 @@ import sys
 from os.path import exists
 from typing import Tuple
 
-NEUTRAL = " ⚪ "
-OK = " 🟢 "
-NEW = " 🔵 "
-ERR = " 🔴 "
+NEUTRAL = " [\x1b[32mINFO\x1b[0m] "
+OK = " [\x1b[32mOK\x1b[0m] "
+NEW = " [\x1b[1;34m!!NEW!!\x1b[0m] "
+ERR = " [\x1b[31mERROR\x1b[0m] "
 
 
 def convert_icons_to_b64(icons: dict) -> dict:
@@ -196,12 +196,12 @@ if __name__ == '__main__':
         os.remove("FilesOldUITheme.json")
     with open("FilesOldUITheme.json", "w", newline="\n") as json_icon_pack_file:
         json_icon_pack_file.write(json_icon_pack)
-    print(f"{OK}つ ◕_◕ ༽つ Created FilesOldUITheme.json Icon Pack")
+    print(f"{OK}Created FilesOldUITheme.json Icon Pack")
 
     # if IconPack has been updated, say it, update THEMES.md with the new number of icons in IconPack,
     # and update JSON IconPack file's version
     if json_icon_pack_updated:
-        print(f"{NEW}つ ◕_◕ ༽つ FilesOldUITheme.json has been updated!")
+        print(f"{NEW}FilesOldUITheme.json has been updated!")
 
         version_tag_start = "<!--FilesOldUITheme_nbOfIcons_start-->"
         version_tag_end = "<!--FilesOldUITheme_nbOfIcons_end-->"
@@ -214,7 +214,7 @@ if __name__ == '__main__':
 
         with open("THEMES.md", "w", newline="\n") as theme_md_file:
             theme_md_file.write(themes_md_str)
-            print(f"{NEW}つ ◕_◕ ༽つ Updated THEMES.md with the new number of icons "
+            print(f"{NEW}Updated THEMES.md with the new number of icons "
                   f"({len(icon_pack)}, \x1b[1;34m{len(icon_pack) - nb_icons} new\x1b[0m)")
             print(f"{NEUTRAL}Git diff on FilesOldUITheme.json:")
             git_diff_call = subprocess.run("git diff FilesOldUITheme.json", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
