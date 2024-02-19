@@ -3,21 +3,20 @@
 ## 2024.3.1 (planned for 2024/02/24)
 * fix compatibility with future builds of IntelliJ 2024.1 based IDEs.
 * reduce usage of deprecated IntelliJ's API, and raise minimum IDE version to 2023.2 (from 2023.1).
-* minor performance improvements and improve code quality.
+* rework the `.idea`, `.idea-sandbox`, `idea-sandbox`, `.mps`, `node_modules`, Circle CI, Dependabot, Docker, Expo, Flyway, Gitlab, GitHub, Gradle, Liquibase, Maven wrapper, Nuget, Semaphore, Storybook and VSCode folder icons for the new UI.
+* rework the `node_modules` folder icon.
 * support `CODE_OF_CONDUCT` files (with `.md`, `.adoc`, `.txt`, `.rst` or no extension).
 * support `intellij.yaml` files.
 * support [LivePlugin](https://plugins.jetbrains.com/docs/intellij/plugin-alternatives.html#liveplugin) `.live-plugins` folders.
 * support Qodana `qodana.yml` files.
 * support some [Typos](https://github.com/crate-ci/typos/blob/master/docs/reference.md#sources) config files.
-* rework the `node_modules` folder icon.
-* rework the `.idea`, `.idea-sandbox`, `idea-sandbox`, `.mps`, `node_modules`, Circle CI, Dependabot, Docker, Expo, Flyway, Gitlab, GitHub, Gradle, Liquibase, Maven wrapper, Nuget, Semaphore, Storybook and VSCode folder icons for the new UI.
 * don't throw an IDE error when failed to import/export/uninstall a user icon pack. Show a standard IntelliJ error dialog instead.
 * move the list of known issues and workarounds and fixes to [online doc](https://plugins.jetbrains.com/plugin/11058-extra-icons/known-issues).
 * plugin description: fix the link to Gateway support online documentation.
 * hints and notifications now display Extra Icons' logo.
-* internal: replace some custom dialogs by standard IntelliJ dialogs.
-* internal: code refactorings, improve stability and maintainability.
-* internal: improvements to the plugin build script.
+* replace some custom dialogs by standard IntelliJ dialogs.
+* internal: minor performance improvements, improve code quality, code refactorings, improve stability and maintainability.
+* internal: huge improvements to the plugin build script.
 
 ## 2024.2.2 (2024/01/18)
 * fix `java.lang.IllegalArgumentException: Illegal character in path at index 8` errors when loading user icons with IntelliJ 2024.1 EAP on Windows.
