@@ -10,7 +10,7 @@
 * support Qodana `qodana.yml` files.
 * support some [Typos](https://github.com/crate-ci/typos/blob/master/docs/reference.md#sources) config files.
 * rework the `node_modules` folder icon.
-* rework the `.idea`, `.idea-sandbox`, `idea-sandbox`, `.mps`, Circle CI, Dependabot, Docker, Flyway, Gitlab, GitHub, Gradle, Liquibase, Maven wrapper, Semaphore, Storybook and VSCode folder icons for the new UI.
+* rework the `.idea`, `.idea-sandbox`, `idea-sandbox`, `.mps`, `node_modules`, Circle CI, Dependabot, Docker, Expo, Flyway, Gitlab, GitHub, Gradle, Liquibase, Maven wrapper, Nuget, Semaphore, Storybook and VSCode folder icons for the new UI.
 * don't throw an IDE error when failed to import/export/uninstall a user icon pack. Show a standard IntelliJ error dialog instead.
 * move the list of known issues and workarounds and fixes to [online doc](https://plugins.jetbrains.com/plugin/11058-extra-icons/known-issues).
 * plugin description: fix the link to Gateway support online documentation.
