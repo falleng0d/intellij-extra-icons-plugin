@@ -19,6 +19,10 @@ Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Tra
 You can also register your own icons in order to override file icons, but also all [IDE icons](https://jetbrains.design/intellij/resources/icons_list/) (including toolbars, menus, etc.). It works with all JetBrains products like IntelliJ (ultimate and community), PyCharm, WebStorm, DataGrip, etc.  
 To get started with this plugin, please see this [guide](docs/GET_STARTED.md).
 
+## Code modified from 3rd party projects
+
+Please see [modfied_external_code](modfied_external_code).
+
 ## Download
 
 Download plugin from the [JetBrains marketplace](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via your IDE: <kbd>File</kbd>, <kbd>Settings...</kbd>, <kbd>Plugins</kbd>, <kbd>Marketplace</kbd>.
