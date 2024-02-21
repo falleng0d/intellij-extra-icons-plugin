@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2024.3.1 (planned for 2024/02/26)
+## 2024.3.1 (2024/02/21)
 * fix compatibility with future builds of IntelliJ 2024.1 based IDEs.
 * reduce usage of deprecated IntelliJ's API, and raise minimum IDE version to 2023.2 (from 2023.1).
 * rework the `.idea`, `.idea-sandbox`, `idea-sandbox`, `.mps`, `node_modules`, Circle CI, Dependabot, Docker, Expo, Flyway, Gitlab, GitHub, Gradle, Liquibase, Maven wrapper, Nuget, Semaphore, Storybook and VSCode folder icons for the new UI.
