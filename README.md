@@ -21,7 +21,7 @@ To get started with this plugin, please see this [guide](docs/GET_STARTED.md).
 
 ## Code modified from 3rd party projects
 
-Please see [modfied_external_code](modfied_external_code).
+Please see [modified_external_code](modified_external_code).
 
 ## Download
 
