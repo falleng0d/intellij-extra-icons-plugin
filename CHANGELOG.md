@@ -1,8 +1,9 @@
 # Extra Icons Change Log
 
 ## 2024.3.2 (WIP)
-* lower minimum IDE version to 2023.1 (from 2023.2). I will raise minimum IDE version to 2023.2 later, when the related deprecated used JetBrains API is removed. There's no impact on stability and performance.
-* support some potential Kotlin Multiplatform folders: `composeApp/src/androidMain`, `composeApp/src/commonMain`, `composeApp/src/desktopMain`, `composeApp/src/iosMain`, `iosMain`.
+* lower minimum IDE version to 2023.1 (from 2023.2). It will also restore the compatibility with the current stable release of Android Studio: Hedgehog. I will raise minimum IDE version to 2023.2 later, when the related deprecated used JetBrains API is removed. There's no impact on stability and performance.
+* support some potential [Kotlin Multiplatform](https://kmp.jetbrains.com/) folders: `composeApp/src/androidMain`, `composeApp/src/commonMain`, `composeApp/src/desktopMain`, `composeApp/src/iosMain`, `iosMain`.
+* support some potential [Fleet plugin](https://github.com/JetBrains/fleet-plugin-template) folders: `fleet-plugin`, `fleet-plugin/backendImpl`, `fleet-plugin/commonImpl`, `fleet-plugin/frontendImpl`, `fleet-plugin/workspaceImpl`.
 
 ## 2024.3.1 (2024/02/21)
 * fix compatibility with future builds of IntelliJ 2024.1 based IDEs.
