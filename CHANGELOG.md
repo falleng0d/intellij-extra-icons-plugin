@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2024.3.3 (WIP)
+* support Doxygen `Doxyfile` files.
+
 ## 2024.3.2 (2024/03/02)
 * lower minimum IDE version to 2023.1 (from 2023.2). It will also restore compatibility with the current stable release of Android Studio: Hedgehog. I will raise minimum IDE version to 2023.2 later, when the related deprecated used JetBrains API is removed. There's no impact on stability and performance.
 * support some potential [Kotlin Multiplatform](https://kmp.jetbrains.com/) folders: `composeApp/src/androidMain`, `composeApp/src/commonMain`, `composeApp/src/desktopMain`, `composeApp/src/iosMain`, `iosMain`.
