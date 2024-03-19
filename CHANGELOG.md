@@ -1,7 +1,8 @@
 # Extra Icons Change Log
 
-## 2024.3.3 (WIP)
+## 2024.3.3 (2024/03/19)
 * support Doxygen `Doxyfile` files.
+* **Important**: Starting from April 15th, 2024, I will increase the Extra Icons plugin's subscription price (€&nbsp;1.50&nbsp;/1st year, €&nbsp;1.20&nbsp;/2nd&nbsp;year, €&nbsp;0.90&nbsp;/3rd year onwards for monthly subscriptions, and €&nbsp;15/12/9 for annual subscriptions). **If you have enabled automatic license renewal, JetBrains will email you one week before the renewal**.<br>You can still cancel your automatic license renewal if you want, at any time.<br>I wanted to update the subscription price in order to reflect the amount of work I am dedicating to this project.<br>Perpetual fallback licenses are still available and, the day JetBrains allows plugins developers to sell lifetime licenses, I will be ready.
 
 ## 2024.3.2 (2024/03/02)
 * lower minimum IDE version to 2023.1 (from 2023.2). It will also restore compatibility with the current stable release of Android Studio: Hedgehog. I will raise minimum IDE version to 2023.2 later, when the related deprecated used JetBrains API is removed. There's no impact on stability and performance.
