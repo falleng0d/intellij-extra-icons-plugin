@@ -5,25 +5,26 @@
     <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
     <!-- IMPORTANT reminder: change the release-date and release-version on major version changes only -->
-    <product-descriptor code="PEXTRAICONS" release-date="20231105" release-version="20233"/>
+    <product-descriptor code="PEXTRAICONS" release-date="20240102" release-version="20241"/>
 
     <description><![CDATA[
-      <!--//LIFETIMELIC_START//Same plugin as Extra Icons, with a <b>lifetime license</b>.//LIFETIMELIC_END//-->
       <ul>
         <li>Adds <b>500+ icons</b> for files like Travis YML, GitLab YML, Angular files, etc. Many icons have <b>variants</b>, so if you are not happy with the default icon, you can choose another.</li>
         <li>Shows an icon for <b>Git sub-module folders</b>.</li>
         <li><b>Highly configurable</b>: see <i>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
         <li>You can also register <b>your own icons</b> in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
-        <li>You can import and export icons from external files. This also means you can easily share icon themes with friends. You can also download online <b>icon packs</b> (example: <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#filesolduitheme">restore the <b>old file icons</b> when using the new UI</a>).</li>
+        <li>You can import and export icons from external files. This also means you can easily share icon themes with friends. You can also download online <b>icon packs</b> (example: <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#filesolduitheme">restore the old file icons when using the new UI</a>).</li>
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
-        <li>For questions about the plugin licensing model, how to get a license for free (students and teachers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
-        <li>JetBrains <b>Gateway</b> support: please install plugin in <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152#issuecomment-1691873681">Host</a>, or in both Host and Client, but not in Client only. Also, for now, plugin's settings panels are partially broken (some fields are hidden, but become visible when clicked or hovered over), but icons override works.</li>
+        <li>For questions about the plugin licensing models, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
+        <li>JetBrains <b>Gateway</b> support is limited. Gateway may fail to register licenses for third-party paid plugins (like Extra Icons), and it may not render some settings GUI forms correctly. Unfortunately, these issues are on the JetBrains side. Installing the plugin on the <i>host</i> and/or <i>client</i> sides can help. As a workaround for licensing issues, you can still build the plugin by yourself and remove the license requirement. The plugin is still free (MIT) and open source. I ask for a modest retribution only if you get the plugin from the marketplace, which, I think, is a good way to support my work. Thank you.</li>
       </ul>
-      📢 If you want to <b>speed up</b> the resolution of a few problems on JetBrains side affecting this plugin, or <b>help plugin developers</b>, please consider up-voting these YouTrack issues:<br>
-      - <a href="https://youtrack.jetbrains.com/issue/IDEA-247819"><b>IDEA-247819</b></a>: IntelliJ does not allow folder icons override in Packages View. This issue has been submitted 3 years ago (Aug 2020), it definitively needs more visibility.<br>
-      - <a href="https://youtrack.jetbrains.com/issue/IDEA-339254"><b>IDEA-339254</b></a>: IntelliJ shows default Class icon for Java Exceptions until you modify them. You have to modify Java Exception files to see the corresponding Exception icon.<br>
-      - <a href="https://youtrack.jetbrains.com/issue/RIDER-101621"><b>RIDER-101621</b></a>: a Rider IDE issue affecting folder icons override.<br>
-      - <a href="https://youtrack.jetbrains.com/issue/MP-4248"><b>MP-4248</b></a> and <a href="https://youtrack.jetbrains.com/issue/MP-5648"><b>MP-5648</b></a>: marketplace moderation problems.<br>
+      📢 If you want to speed up the resolution of a few problems on JetBrains side affecting this plugin, or help plugin developers, please consider up-voting these YouTrack issues:
+      <ul>
+        <li><a href="https://youtrack.jetbrains.com/issue/IDEA-247819">IDEA-247819</a>: IntelliJ does not allow folder icons override in Packages View. This issue has been submitted 3 years ago (Aug 2020), it definitively needs more visibility.</li>
+        <li><a href="https://youtrack.jetbrains.com/issue/IDEA-339254">IDEA-339254</a>: IntelliJ shows default Class icon for Java Exceptions until you modify them. You have to modify Java Exception files to see the corresponding Exception icon.</li>
+        <li><a href="https://youtrack.jetbrains.com/issue/RIDER-101621">RIDER-101621</a>: a Rider IDE issue affecting folder icons override.</li>
+        <li><a href="https://youtrack.jetbrains.com/issue/MP-4248">MP-4248</a> and <a href="https://youtrack.jetbrains.com/issue/MP-5648">MP-5648</a>: marketplace moderation problems.</li>
+      </ul>
       Thank you!
       <br>
       <br>
@@ -31,7 +32,7 @@
       如果你启用官方IDE中文语言包插件, Extra Icons中文用户界面将自动应用.
       <br>
       <br>
-      <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin">GitHub</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues">Issues</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md#extra-icons-change-log">Changelog</a> | <a href="https://www.linkedin.com/in/jonathan-lermitage/">LinkedIn</a> | <a href="https://vshymanskyy.github.io/StandWithUkraine/">💙 Help Ukraine 💛</a>
+      <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin">GitHub</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues">Issues</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">Changelog</a> | <a href="https://www.linkedin.com/in/jonathan-lermitage/">LinkedIn</a> | <a href="https://vshymanskyy.github.io/StandWithUkraine/">💙 Help Ukraine 💛</a>
       <br>
       <br>
     ]]>
@@ -50,7 +51,11 @@
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
 
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html#incompatible-with -->
+    <incompatible-with>REPLACED_BY_GRADLE</incompatible-with>
+
     <!-- Icon Patchers override file icon by icon name -->
+    <!--suppress PluginXmlDynamicPlugin --> <!-- PluginXmlDynamicPlugin suppressed because plugin already has 'require-restart="true"' -->
     <application-components>
         <component>
             <implementation-class>lermitage.intellij.extra.icons.ExtraIconPatcher</implementation-class>
@@ -62,17 +67,17 @@
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <fileIconProvider
             id="extraIconsFileIconProvider"
-            order="first, before lermitage.intellij.extratci, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure, before com.haulmont.jpab, before com.intellij.ml.llm"
+            order="first, before lermitage.intellij.extratci, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure, before com.haulmont.jpab, before com.intellij.ml.llm, before org.jetbrains.android, before Dart, before io.flutter"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <iconProvider
             id="extraIconsIconProvider"
-            order="first, before lermitage.intellij.extratci, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure, before com.haulmont.jpab, before com.intellij.ml.llm"
+            order="first, before lermitage.intellij.extratci, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure, before com.haulmont.jpab, before com.intellij.ml.llm, before org.jetbrains.android, before Dart, before io.flutter"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <projectViewNodeDecorator
             id="extraIconsProjectViewNodeDecorator"
-            order="first, before lermitage.intellij.extratci, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure, before com.haulmont.jpab, before com.intellij.ml.llm"
+            order="first, before lermitage.intellij.extratci, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure, before com.haulmont.jpab, before com.intellij.ml.llm, before org.jetbrains.android, before Dart, before io.flutter"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
 
         <!-- Settings services -->
@@ -96,9 +101,10 @@
         <!-- Startup tasks https://plugins.jetbrains.com/docs/intellij/plugin-components.html#project-open -->
         <!-- Init all Icon Enablers once indexing is done then reload projects icons -->
         <!-- Subscribe to a message bus in order to manage icons refreshing -->
-        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.RefreshIconsListenerProjectActivity"
-                             id="ExtraIcons_RefreshIconsListenerProjectActivity"
-                             order="last, before ExtraIcons_EnablerServicesProjectActivity, before ExtraIcons_HintNotificationsProjectActivity, before ExtraIcons_VFSChangesListenersProjectActivity"/>
+        <postStartupActivity
+            implementation="lermitage.intellij.extra.icons.activity.RefreshIconsListenerProjectActivity"
+            id="ExtraIcons_RefreshIconsListenerProjectActivity"
+            order="last, before ExtraIcons_EnablerServicesProjectActivity, before ExtraIcons_HintNotificationsProjectActivity, before ExtraIcons_VFSChangesListenersProjectActivity"/>
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesProjectActivity"
                              id="ExtraIcons_EnablerServicesProjectActivity"
                              order="last"/>
@@ -110,7 +116,10 @@
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.VFSChangesListenersProjectActivity"
                              id="ExtraIcons_VFSChangesListenersProjectActivity"
                              order="last, after ExtraIcons_EnablerServicesProjectActivity"/>
-
+        <!-- Check plugin's license activation -->
+        <backgroundPostStartupActivity implementation="lermitage.intellij.extra.icons.activity.ExtraIconsLicenseCheckIDEActivity"
+                                       id="ExtraIcons_LicCheckProjectActivity"
+                                       order="last"/>
     </extensions>
 
 </idea-plugin>

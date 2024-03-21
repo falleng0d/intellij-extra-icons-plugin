@@ -215,6 +215,14 @@ public class Model {
     }
 
     /**
+     * Condition: file or folder (does not apply to {@link ModelType#ICON} model types) is located in the project folder, not in any subfolder.
+     */
+    public Model inProjectRootFolder() {
+        getCurrentCondition().setIsInProjectRootFolder();
+        return this;
+    }
+
+    /**
      * Condition: file/folder name starts with given string(s).
      * @param start strings, lowercase.
      */

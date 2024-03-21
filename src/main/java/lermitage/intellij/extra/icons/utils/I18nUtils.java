@@ -49,7 +49,9 @@ public class I18nUtils {
                 }
             }
         } catch (Exception e) {
-            LOGGER.warnWithDebug(e);
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("Failed to list loaded plugins", e);
+            }
         }
         isChineseUIEnabled = false;
         return false;

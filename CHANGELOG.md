@@ -1,8 +1,25 @@
 # Extra Icons Change Log
 
-## 2023.4.3 (WIP)
-* build script: prepare the work for the introduction of [lifetime licenses](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md#how-to-get-a-lifetime-license).
+## 2024.1.2 (WIP)
+* optimize icons size by ~3% with SVGO 3.2.0.
+* fix [#176](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/176): clicking 'Go to Extra Icons settings' from the notification just throws an error.
+
+## 2024.1.1 (2024/01/02)
+* **INFO**: JetBrains will introduce a new business model for paid/freemium plugins. This model will offer a perpetual license, **allowing users to make a one-time payment for the plugin and use it for a lifetime**. [Get more information here](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md#how-to-get-a-lifetime-license). There is no ETA yet.
+* build script: prepare the work for the introduction of lifetime licenses.
+* fix [#175](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/175): `java.lang.Throwable: Must be precomputed`. UI Scale detection could fail at startup. It should be fixed now.
+* initial support of [Flutter](https://flutter.dev) icons.
 * improve Prettier support.
+* improve Gradle support.
+* add the new alternative GitLab "next" orange icon for `.gitlab-ci.yml` files.
+* rework GitLab folder icon.
+* rework Privacy icon.
+* support `(.)log(s)`folders.
+* support `.noai` files (which tell the AI Assistant plugin to block AI features for the containing project).
+* support [Detekt](https://detekt.dev/docs/introduction/configurations/) files ending by `detekt-config.yml` or `detekt.yml` (I may try to pick the configured Detekt filename from the `build.gradle(.kts)` file later).
+* support Qodana `qodana.yaml` files.
+* plugin's license is now verified occasionally, in addition to the verification done by IDE at startup.
+* starting from 2024, I will occasionally send some [coupons](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md#i-received-a-coupon-for-a-free-license-how-does-it-work) for Free licenses on [Twitter](https://twitter.com/JLermitage) and [Bluesky](https://bsky.app/profile/jonathanlermitage.bsky.social). Stay tuned.
 
 ## 2023.4.2 (2023/12/03)
 * **INFO**: JetBrains will introduce a new business model for paid/freemium plugins. This model will offer a perpetual license, **allowing users to make a one-time payment for the plugin and use it for a lifetime**. [Get more information here](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md#how-to-get-a-lifetime-license).
@@ -925,7 +942,7 @@ This way, you simply have to download the latest version offered by the plugin m
 * support `jenkins`, `NOTICE`, `CONTACT` files (with `.md`, `.adoc`, `.txt` or no extension).
 
 ## 0.4 (2018/08/26)
-* enabled compatibility with all products (WebStorm, etc).
+* enabled compatibility with all products (WebStorm, etc.).
 * rework Maven wrapper `mvnw`, Gradle wrapper `gradlew` files.
 * support `README`, `CHANGELOG`, `CHANGES`, `LICENSE`, `COPYING`, `CONTRIBUTING`, `AUTHORS` files (with `.md`, `.adoc`, `.txt` or no extension).
 

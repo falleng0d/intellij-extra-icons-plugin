@@ -2,12 +2,12 @@
 
 package lermitage.intellij.extra.icons.activity;
 
-import com.intellij.ide.BrowserUtil;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationAction;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.ProjectActivity;
@@ -20,6 +20,8 @@ import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.messaging.RefreshIconsNotifierService;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IJUtils;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,11 +33,17 @@ import java.util.ResourceBundle;
  */
 public class HintNotificationsProjectActivity implements ProjectActivity {
 
+    private static final @NonNls Logger LOGGER = Logger.getInstance(HintNotificationsProjectActivity.class);
+
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
     @Nullable
     @Override
     public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
+        if (!ProjectUtils.isProjectAlive(project)) {
+            LOGGER.info(this.getClass().getName() + " started before project is ready. Will not show startup notifications this time");
+            return null;
+        }
         SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
 
         boolean alwaysShowNotifications = System.getProperty("extra-icons.always.show.notifications", "false").equals("true"); //NON-NLS
@@ -59,22 +67,24 @@ public class HintNotificationsProjectActivity implements ProjectActivity {
         }
 
         // TODO uncomment once Lifetime licences are available
-        /*try {
-            if (!settingsIDEService.getLifetimeLicIntroHintNotifDisplayed() || alwaysShowNotifications) {
-                Notification notif = new Notification(Globals.PLUGIN_GROUP_DISPLAY_ID,
-                    i18n.getString("notif.tips.lifetime.lic.intro.title"),
-                    i18n.getString("notif.tips.lifetime.lic.intro.content"),
-                    NotificationType.INFORMATION);
-                notif.addAction(new NotificationAction(i18n.getString("notif.tips.lifetime.lic.intro.btn")) {
-                    @Override
-                    public void actionPerformed(@NotNull AnActionEvent e, @NotNull Notification notification) {
-                        BrowserUtil.browse("https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md#how-to-get-a-lifetime-license");
-                    }
-                });
-                Notifications.Bus.notify(notif);
+        /*if (!IJUtils.isExtraIconsLifetimeLoaded()) {
+            try {
+                if (!settingsIDEService.getLifetimeLicIntroHintNotifDisplayed() || alwaysShowNotifications) {
+                    Notification notif = new Notification(Globals.PLUGIN_GROUP_DISPLAY_ID,
+                        i18n.getString("notif.tips.lifetime.lic.intro.title"),
+                        i18n.getString("notif.tips.lifetime.lic.intro.content"),
+                        NotificationType.INFORMATION);
+                    notif.addAction(new NotificationAction(i18n.getString("notif.tips.lifetime.lic.intro.btn")) {
+                        @Override
+                        public void actionPerformed(@NotNull AnActionEvent e, @NotNull Notification notification) {
+                            BrowserUtil.browse("https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md#how-to-get-a-lifetime-license");
+                        }
+                    });
+                    Notifications.Bus.notify(notif);
+                }
+            } finally {
+                settingsIDEService.setLifetimeLicIntroHintNotifDisplayed(true);
             }
-        } finally {
-            settingsIDEService.setLifetimeLicIntroHintNotifDisplayed(true);
         }*/
 
         if (IJUtils.isIconViewer2Loaded()) {
@@ -108,6 +118,7 @@ public class HintNotificationsProjectActivity implements ProjectActivity {
                 settingsIDEService.setIconviewerShouldRenderSVGHintNotifDisplayed(true);
             }
         }
+
         return null;
     }
 }

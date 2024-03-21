@@ -302,6 +302,10 @@ tasks {
 
         // avoid JBUIScale "Must be precomputed" error, because IDE is not started (LoadingState.APP_STARTED.isOccurred is false)
         jvmArgs("-Djava.awt.headless=true")
+
+        // classpath indexing is not needed during unit tests
+        // also, disabled to avoid useless 'NoSuchFileException: build/instrumented/instrumentCode/classpath.index.tmp' warnings
+        systemProperties("idea.classpath.index.enabled" to false)
     }
     withType<DependencyUpdatesTask> {
         checkForGradleUpdate = true

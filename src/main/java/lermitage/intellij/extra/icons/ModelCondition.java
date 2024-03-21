@@ -46,6 +46,8 @@ public class ModelCondition {
     private boolean checkFacets = false;
     @OptionTag
     private boolean hasIconEnabler = false;
+    @OptionTag
+    private boolean isInProjectRootFolder = false;
 
     @OptionTag
     private String[] names = new String[0];
@@ -110,9 +112,19 @@ public class ModelCondition {
         this.iconEnablerType = iconEnablerType;
     }
 
+    public void setIsInProjectRootFolder() {
+        this.isInProjectRootFolder = true;
+    }
+
     public boolean check(String parentName, String fileName, @Nullable String fullPath, Set<String> prjFacets, Project project) {
         if (!enabled) {
             return false;
+        }
+
+        if (isInProjectRootFolder) {
+            if (fullPath == null || !fullPath.equalsIgnoreCase(project.getBasePath() + "/" + fileName)) {
+                return false;
+            }
         }
 
         if (hasIconEnabler && fullPath != null) {

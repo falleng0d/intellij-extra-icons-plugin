@@ -113,7 +113,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("dir_gitlab", "extra-icons/folder_gitlab.svg", "Gitlab: .gitlab folder")
                     .eq(".gitlab"),
                 ofDir("dir_gradle", "extra-icons/folder_gradle.svg", "Gradle: gradle folder")
-                    .eq("gradle"),
+                    .eq("gradle")
+                    .inProjectRootFolder(),
                 ofDir("dir_idea", "extra-icons/folder_idea.svg", "IntelliJ IDEA: .idea folder")
                     .eq(".idea"),
                 ofDir("dir_ideasandbox", "extra-icons/folder_idea.svg", "IntelliJ IDEA: .idea-sandbox and idea-sandbox folders")
@@ -124,6 +125,22 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".jpb")
                     .altIcons("extra-icons/folder_jpabuddy_alt.svg", "extra-icons/folder_jpabuddy_alt2.svg",
                         "extra-icons/folder_jpabuddy_alt3.svg")
+                    .autoLoadNewUIIconVariant(),
+                ofDir("dir_log", "extra-icons/folder_tmp.svg", "Logs: 'log' folder at project's root level")
+                    .eq("log")
+                    .inProjectRootFolder()
+                    .autoLoadNewUIIconVariant(),
+                ofDir("dir_dotlog", "extra-icons/folder_tmp.svg", "Logs: '.log' folder at project's root level")
+                    .eq(".log")
+                    .inProjectRootFolder()
+                    .autoLoadNewUIIconVariant(),
+                ofDir("dir_logs", "extra-icons/folder_tmp.svg", "Logs: 'logs' folder at project's root level")
+                    .eq("logs")
+                    .inProjectRootFolder()
+                    .autoLoadNewUIIconVariant(),
+                ofDir("dir_dotlogs", "extra-icons/folder_tmp.svg", "Logs: '.logs' folder at project's root level")
+                    .eq(".logs")
+                    .inProjectRootFolder()
                     .autoLoadNewUIIconVariant(),
                 ofDir("dir_mergify", "extra-icons/folder_mergify.svg", "Mergify: .mergify folder")
                     .eq(".mergify"),
@@ -419,6 +436,67 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.ANGULAR2, ModelTag.HTML),
                 //</editor-fold>
 
+                //<editor-fold desc="flutter">
+                ofFile("flutter_pubspecyaml", "extra-icons/flutter.svg", "Flutter: pubspec.yaml")
+                    .eq("pubspec.yaml")
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofFile("flutter_pubspeclock", "extra-icons/flutterlock.svg", "Flutter: pubspec.lock")
+                    .eq("pubspec.lock")
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofFile("flutter_metadata", "extra-icons/flutter-metadata.svg", "Flutter: .metadata")
+                    .eq(".metadata")
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofFile("flutter_analysisoptionsyaml", "extra-icons/flutter-analysisoptions.svg", "Flutter: analysis_options.yaml")
+                    .eq("analysis_options.yaml")
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofDir("flutter_dirandroid", "extra-icons/folder_os_android.svg", "Flutter: android folder")
+                    .eq("android")
+                    .autoLoadNewUIIconVariant()
+                    .inProjectRootFolder()
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofDir("flutter_dirlinux", "extra-icons/folder_os_linux.svg", "Flutter: linux folder")
+                    .eq("linux")
+                    .autoLoadNewUIIconVariant()
+                    .inProjectRootFolder()
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofDir("flutter_dirwindows", "extra-icons/folder_os_windows.svg", "Flutter: windows folder")
+                    .eq("windows")
+                    .autoLoadNewUIIconVariant()
+                    .inProjectRootFolder()
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofDir("flutter_dirios", "extra-icons/folder_os_ios.svg", "Flutter: ios folder")
+                    .eq("ios")
+                    .autoLoadNewUIIconVariant()
+                    .inProjectRootFolder()
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofDir("flutter_dirmacos", "extra-icons/folder_os_macos.svg", "Flutter: macos folder")
+                    .eq("macos")
+                    .autoLoadNewUIIconVariant()
+                    .inProjectRootFolder()
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofDir("flutter_dirweb", "extra-icons/folder_os_web.svg", "Flutter: web folder")
+                    .eq("web")
+                    .autoLoadNewUIIconVariant()
+                    .inProjectRootFolder()
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                ofDir("flutter_dirdarttool", "extra-icons/folder_tmp.svg", "Flutter: .dart_tool folder")
+                    .eq(".dart_tool")
+                    .autoLoadNewUIIconVariant()
+                    .inProjectRootFolder()
+                    .iconEnabler(IconEnablerType.IS_IN_FLUTTER_FOLDER)
+                    .tags(ModelTag.FLUTTER),
+                //</editor-fold>
+
                 //<editor-fold desc="elixir">
                 ofFile("elixir", "extra-icons/elixir.svg", "Elixir: *.ex, *.exs")
                     .end(".ex", ".exs", "mix.lock"),
@@ -702,6 +780,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("cerebro").mayEnd(".conf"),
                 ofFile("cerebro1", "extra-icons/elastic-cerebro.svg", "Cerebro: start by 'cerebro' and end by '.conf'")
                     .start("cerebro").end(".conf"),
+                ofFile("detekt", "extra-icons/detekt.svg", "Detekt: end by 'detekt-config.yml' or 'detekt.yml'")
+                    .end("detekt-config.yml", "detekt.yml"),
                 ofFile("faq", "extra-icons/faq.svg", "FAQ: faq(.md,.txt,.adoc,.rst)")
                     .eq("faq").mayEnd(TXT)
                     .altIcons("extra-icons/faq_alt.svg", "extra-icons/faq_alt2.svg",
@@ -737,7 +817,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".git-blame-ignore-revs"),
                 ofFile("gitlab", "extra-icons/gitlab.svg", "Gitlab: .gitlab-ci.yml")
                     .eq(".gitlab-ci.yml")
-                    .altIcons("extra-icons/gitlab_alt.svg"),
+                    .altIcons("extra-icons/gitlab_next.svg", "extra-icons/gitlab_alt.svg"),
                 ofFile("grafana", "extra-icons/grafana.svg", "Grafana: grafana.ini")
                     .eq("grafana.ini"),
                 ofFile("graphqlconfig", "extra-icons/graphql_config.svg", "GraphQL: graphql.config.json")
@@ -860,6 +940,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".npmrc"),
                 ofFile("npmignore", "extra-icons/npmignore.svg", "NPM: .npmignore")
                     .eq(".npmignore"),
+                ofFile("noai", "extra-icons/noai.svg", "AI Assistant: .noai (block AI features for the project)")
+                    .eq(".noai")
+                    .inProjectRootFolder()
+                    .altIcons("extra-icons/noai_alt.svg"),
                 ofFile("notice", "extra-icons/notice.svg", "Notice: notice(.md,.txt,.adoc,.rst)")
                     .eq("notice").mayEnd(TXT),
                 ofFile("nox", "extra-icons/nox.svg", "Nox: noxfile.py")
@@ -932,6 +1016,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .start("puppet").end(".conf"),
                 ofFile("pytest", "extra-icons/pytest.svg", "Pytest: pytest.ini")
                     .eq("pytest.ini"),
+                ofFile("qodana", "extra-icons/qodana.svg", "Qodana: qodana.yaml")
+                    .eq("qodana.yaml")
+                    .altIcons("extra-icons/qodana_alt.svg"),
                 ofFile("readme", "extra-icons/readme.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi")
                     .eq("readme", "lisezmoi").mayEnd(TXT)
                     .altIcons("extra-icons/readme_alt.svg", "extra-icons/readme_alt2.svg"),

@@ -25,7 +25,9 @@ public class ProjectUtils {
             return true;
         } else {
             if (project == null) {
-                LOGGER.warn("Project is null"); //NON-NLS
+                if (LOGGER.isDebugEnabled()) {
+                    LOGGER.debug("Project is null"); //NON-NLS
+                }
             } else {
                 LOGGER.warn("Project '" + project.getName() + "' is not alive - Project is disposed: " + project.isDisposed()); //NON-NLS
             }

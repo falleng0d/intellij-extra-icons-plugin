@@ -13,6 +13,9 @@ public enum IconEnablerType {
     /** Detect folders containing Angular files. */
     IS_IN_ANGULAR_FOLDER,
 
+    /** Detect folders containing Flutter files. */
+    IS_IN_FLUTTER_FOLDER,
+
     /** Detect folders containing GraphQL files. */
     IS_IN_GRAPHQL_FOLDER,
 

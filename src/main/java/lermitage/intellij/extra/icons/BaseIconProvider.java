@@ -20,6 +20,7 @@ import com.intellij.ui.NewUI;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import lermitage.intellij.extra.icons.lic.ExtraIconsLicenseStatus;
 import lermitage.intellij.extra.icons.services.FacetsFinderService;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
@@ -64,7 +65,9 @@ public abstract class BaseIconProvider
     public BaseIconProvider() {
         super();
         final UIType uiType = NewUI.isEnabled() ? UIType.NEW_UI : UIType.OLD_UI;
-        LOGGER.info("Detected UI Type: " + uiType);
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Detected UI Type: " + uiType);
+        }
         this.models = getAllModels().stream()
             .filter(model -> model.getModelType() == ModelType.FILE || model.getModelType() == ModelType.DIR)
             .filter(model -> model.getUiType() == null || model.getUiType() == uiType)
@@ -75,6 +78,9 @@ public abstract class BaseIconProvider
     /**
      * Get list of all models managed by this icon provider. Their 'enabled' field doesn't matter.
      * This list will be processed by constructor and models 'enabled' field updated according to running IDE configuration.
+     * Useful if BaseIconProvider has multiple inheritors, per example if one of them depends on a 3rd-party plugin (did
+     * that for Angular, before removing it in favor of an Icon Enabler). May refactor and remove this method later if
+     * it's still not used.
      */
     protected abstract List<Model> getAllModels();
 
@@ -225,6 +231,9 @@ public abstract class BaseIconProvider
 
     @Nullable
     private Icon getIcon(@NotNull File file, @NotNull FileType fileType, @Nullable Project project) {
+        if (!ExtraIconsLicenseStatus.isLicenseActivated()) {
+            return null;
+        }
         nbGetIcon++;
         try {
             if (!ProjectUtils.isProjectAlive(project)) {

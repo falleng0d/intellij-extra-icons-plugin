@@ -4,11 +4,13 @@ package lermitage.intellij.extra.icons.cfg.services;
 
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.ui.scale.JBUIScale;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.MessageFormat;
@@ -33,7 +35,18 @@ public abstract class SettingsService {
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
-    public static final double DEFAULT_ADDITIONAL_UI_SCALE = JBUIScale.sysScale(); // TODO see what fits best: JBUIScale.sysScale or JBUI.pixScale. JBUI.pixScale can take a frame, which may be useful with multiple displays
+    private static final @NonNls Logger LOGGER = Logger.getInstance(SettingsService.class);
+
+    public static final double DEFAULT_ADDITIONAL_UI_SCALE = findSysScale(); // TODO see what fits best: JBUIScale.sysScale or JBUI.pixScale. JBUI.pixScale can take a frame, which may be useful with multiple displays
+
+    private static double findSysScale() {
+        try {
+            return JBUIScale.sysScale();
+        } catch (Throwable t) {
+            LOGGER.warn(t);
+            return 1;
+        }
+    }
 
     public List<String> getDisabledModelIds() {
         if (disabledModelIds == null) { // a malformed xml file could make it null

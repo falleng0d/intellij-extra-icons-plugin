@@ -59,37 +59,37 @@ runold: intro ## run plugin in oldest supported IntelliJ Community version
 
 .PHONY: build
 build: intro ## build and package a plugin which asks for a paid subscription license to build/distribution/ (see generated ZIP file)
-	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin showGeneratedPlugin --warning-mode all -PpluginLicenseType=subscription
+	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin showGeneratedPlugin -PpluginLicenseType=subscription
 
 
 .PHONY: buildfree
 buildfree: intro ## build and package a plugin which doesn't ask for a paid license to build/distribution/ (see generated ZIP file)
-	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin showGeneratedPlugin --warning-mode all -PpluginLicenseType=free
+	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin showGeneratedPlugin -PpluginLicenseType=free
 
 
 .PHONY: buildlifetime
 buildlifetime: intro ## build and package a plugin which asks for a paid lifetime license to build/distribution/ (see generated ZIP file)
-	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin showGeneratedPlugin --warning-mode all -PpluginLicenseType=lifetime
+	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin showGeneratedPlugin -PpluginLicenseType=lifetime
 
 
 .PHONY: lint
 lint: intro ## run linter(s), for now Modernizer
-	${gradlew_cmd} modernizer --warning-mode all
+	${gradlew_cmd} modernizer
 
 
 .PHONY: test
 test: intro ## run unit tests
-	${gradlew_cmd} cleanTest test verifyPlugin --warning-mode all
+	${gradlew_cmd} cleanTest test verifyPlugin
 
 
 .PHONY: cv
 cv: intro ## check dependencies and Gradle updates
-	${gradlew_cmd} dependencyUpdates --warning-mode all
+	${gradlew_cmd} dependencyUpdates
 
 
 .PHONY: cvnd
 cvnd: intro ## check dependencies and Gradle updates (use a single-use Gradle daemon process by using --no-daemon)
-	${gradlew_cmd} dependencyUpdates --warning-mode all --no-daemon
+	${gradlew_cmd} dependencyUpdates --no-daemon
 
 
 .PHONY: oga
@@ -99,6 +99,7 @@ oga: intro ## check for deprecated groupId and artifactId coordinates
 
 .PHONY: svgo
 svgo: intro ## optimize SVG icons with SVGO (SVGO must be present, type "npm install -g svgo" if needed)
+	svgo --folder=misc/ --recursive
 	svgo --folder=src/main/resources/ --recursive
 
 
@@ -114,7 +115,7 @@ dt: intro ## show dependencies graph
 
 .PHONY: publish
 publish: intro ## publish package to the JetBrains marketplace
-	${gradlew_cmd} clean buildPlugin test verifyPlugin publishPlugin --warning-mode all
+	${gradlew_cmd} clean buildPlugin test verifyPlugin publishPlugin
 
 
 .PHONY: help

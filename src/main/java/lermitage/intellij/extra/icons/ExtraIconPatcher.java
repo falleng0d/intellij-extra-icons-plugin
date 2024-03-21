@@ -33,7 +33,9 @@ public class ExtraIconPatcher extends IconPathPatcher {
     @NotNull
     public static Map<String, String> getEnabledIcons() {
         final UIType uiType = NewUI.isEnabled() ? UIType.NEW_UI : UIType.OLD_UI;
-        LOGGER.info("Detected UI Type: " + uiType);
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Detected UI Type: " + uiType);
+        }
         boolean preferNewUI = switch (SettingsIDEService.getInstance().getUiTypeIconsPreference()) {
             case BASED_ON_ACTIVE_UI_TYPE -> NewUI.isEnabled();
             case PREFER_NEW_UI_ICONS -> true;

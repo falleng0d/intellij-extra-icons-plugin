@@ -10,6 +10,7 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.util.ui.EDT;
+import lermitage.intellij.extra.icons.lic.ExtraIconsPluginType;
 import org.jetbrains.annotations.NonNls;
 
 public class IJUtils {
@@ -19,12 +20,23 @@ public class IJUtils {
     public static final boolean IS_IDE_2023_OR_OLDER = isIde2023OrOlder();
 
     /**
-     * Indicate if plugin <a href="https://github.com/jonathanlermitage/IconViewer">lermitage.intellij.iconviewer</a>
+     * Indicate if plugin <a href="https://github.com/jonathanlermitage/IconViewer">Icon Viewer 2</a>
      * is installed and enabled.
      */
     public static boolean isIconViewer2Loaded() {
+        return isPluginLoaded("lermitage.intellij.iconviewer");
+    }
+
+    /**
+     * Indicate if plugin <b>Extra Icons Lifetime</b> is installed and enabled.
+     */
+    public static boolean isExtraIconsLifetimeLoaded() {
+        return isPluginLoaded(ExtraIconsPluginType.LIFETIME.getPluginId());
+    }
+
+    public static boolean isPluginLoaded(String pluginId) {
         try {
-            PluginId id = PluginId.findId("lermitage.intellij.iconviewer");
+            PluginId id = PluginId.findId(pluginId);
             if (id == null) {
                 return false;
             }
@@ -34,7 +46,7 @@ public class IJUtils {
             }
             return plugin.isEnabled();
         } catch (Exception e) {
-            LOGGER.warn("Can't determine if plugin 'lermitage.intellij.iconviewer' is installed and enabled", e);
+            LOGGER.warn("Can't determine if plugin '" + pluginId + "' is installed and enabled", e);
             return false;
         }
     }

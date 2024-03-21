@@ -7,6 +7,7 @@ public enum ModelTag {
 
     ANGULAR2("Angular", "extra-icons/angular2.svg"),
     DOCKER("Docker", "extra-icons/docker_.svg"),
+    FLUTTER("Flutter", "extra-icons/flutter.svg"),
     FLYWAY("Flyway", "extra-icons/flyway.svg"),
     HELM("Helm", "extra-icons/helm.svg"),
     HTML("HTML", "extra-icons/html5.svg"),
