@@ -1,11 +1,11 @@
 <idea-plugin require-restart="true">
-    <id>lermitage.intellij.extra.icons</id>
-    <name>Extra Icons</name>
+    <id>mtjr.intellij.extra.icons</id>
+    <name>MTJR Extra Icons</name>
     <version>REPLACED_BY_GRADLE</version>
-    <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
+    <vendor email="mateus@matj.dev" url="https://github.com/falleng0d">MATEUS_JUNIOR</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
     <!-- IMPORTANT reminder: change the release-date and release-version on major version changes only -->
-    <product-descriptor code="PEXTRAICONS" release-date="20240102" release-version="20241"/>
+    <!--//FREE_LIC//<product-descriptor code="PEXTRAICONS" release-date="20240102" release-version="20241"/>//FREE_LIC//-->
 
     <description><![CDATA[
       <ul>
@@ -116,10 +116,6 @@
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.VFSChangesListenersProjectActivity"
                              id="ExtraIcons_VFSChangesListenersProjectActivity"
                              order="last, after ExtraIcons_EnablerServicesProjectActivity"/>
-        <!-- Check plugin's license activation -->
-        <backgroundPostStartupActivity implementation="lermitage.intellij.extra.icons.activity.ExtraIconsLicenseCheckIDEActivity"
-                                       id="ExtraIcons_LicCheckProjectActivity"
-                                       order="last"/>
     </extensions>
 
 </idea-plugin>

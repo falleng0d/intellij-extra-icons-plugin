@@ -4,15 +4,11 @@ package lermitage.intellij.extra.icons.lic;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 @SuppressWarnings("HardCodedStringLiteral")
 public enum ExtraIconsPluginType {
 
-    SUBSCRIPTION("lermitage.intellij.extra.icons", "PEXTRAICONS", true),
-    LIFETIME("lermitage.extra.icons.lifetime", "PEXTRAICONSLIFE", true),
+    SUBSCRIPTION("lermitage.intellij.extra.icons", "PEXTRAICONS", false),
+    LIFETIME("lermitage.extra.icons.lifetime", "PEXTRAICONSLIFE", false),
     FREE("lermitage.extra.icons.free", "PEXTRAICONFREE", false),
     NOT_FOUND("lermitage.extra.icons.not.found", "PNOTFOUND", true);
 
@@ -35,7 +31,7 @@ public enum ExtraIconsPluginType {
     }
 
     public boolean isRequiresLicense() {
-        return requiresLicense;
+        return false;
     }
 
     @Override
@@ -47,13 +43,4 @@ public enum ExtraIconsPluginType {
             '}';
     }
 
-    /**
-     * Plugin types with code that actually exists. Filter others, otherwise users would be able
-     * to bypass license by installing a plugin with the appropriate code.
-     */
-    public static Set<ExtraIconsPluginType> getFindableTypes() {
-        return Arrays.stream(ExtraIconsPluginType.values())
-            .dropWhile(type -> type == NOT_FOUND)
-            .collect(Collectors.toUnmodifiableSet());
-    }
 }

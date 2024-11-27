@@ -165,7 +165,42 @@ tasks {
             }
         }
     }
-
+    register("renamePluginInfoToLifetimeInPluginXml") {
+        doLast {
+            var pluginXmlStr = pluginXmlFile.readText()
+            pluginXmlStr = pluginXmlStr.replace("<id>lermitage.intellij.extra.icons</id>", "<id>lermitage.extra.icons.lifetime</id>")
+            pluginXmlStr = pluginXmlStr.replace("<name>Extra Icons</name>", "<name>Extra Icons Lifetime</name>")
+            pluginXmlStr = pluginXmlStr.replace("<product-descriptor code=\"PEXTRAICONS\"", "<product-descriptor code=\"PEXTRAICONSLIFE\"")
+            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_START//", "<!--//LIFETIMELIC_START//-->")
+            pluginXmlStr = pluginXmlStr.replace("//LIFETIMELIC_END//-->", "<!--//LIFETIMELIC_END//-->")
+            FileUtils.delete(pluginXmlFile)
+            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
+        }
+    }
+    register("restorePluginInfoFromLifetimeInPluginXml") {
+        doLast {
+            var pluginXmlStr = pluginXmlFile.readText()
+            pluginXmlStr = pluginXmlStr.replace("<id>lermitage.extra.icons.lifetime</id>", "<id>lermitage.intellij.extra.icons</id>")
+            pluginXmlStr = pluginXmlStr.replace("<name>Extra Icons Lifetime</name>", "<name>Extra Icons</name>")
+            pluginXmlStr = pluginXmlStr.replace("<product-descriptor code=\"PEXTRAICONSLIFE\"", "<product-descriptor code=\"PEXTRAICONS\"")
+            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_START//-->", "<!--//LIFETIMELIC_START//")
+            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_END//-->", "//LIFETIMELIC_END//-->")
+            FileUtils.delete(pluginXmlFile)
+            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
+        }
+    }
+    register("renameDistributionLifetimeLicense") {
+        doLast {
+            val baseName = "build/distributions/Extra Icons-$version"
+            val noLicPluginFile = projectDir.resolve("${baseName}-lifetime.zip")
+            val originalPluginFile = projectDir.resolve("${baseName}.zip")
+            noLicPluginFile.delete()
+            if (originalPluginFile.exists()) {
+                FileUtils.moveFile(projectDir.resolve("${baseName}.zip"), noLicPluginFile)
+                System.setProperty("pluginFilePath", noLicPluginFile.absolutePath)
+            }
+        }
+    }
     register("installPlugin") {
         doLast {
             val pluginFilePath = System.getProperty("pluginFilePath")
@@ -228,42 +263,6 @@ tasks {
                 }
 
                 println("Plugin installed to $installationName")
-            }
-        }
-    }
-
-    register("renamePluginInfoToLifetimeInPluginXml") {
-        doLast {
-            var pluginXmlStr = pluginXmlFile.readText()
-            pluginXmlStr = pluginXmlStr.replace("<id>lermitage.intellij.extra.icons</id>", "<id>lermitage.extra.icons.lifetime</id>")
-            pluginXmlStr = pluginXmlStr.replace("<name>Extra Icons</name>", "<name>Extra Icons Lifetime</name>")
-            pluginXmlStr = pluginXmlStr.replace("<product-descriptor code=\"PEXTRAICONS\"", "<product-descriptor code=\"PEXTRAICONSLIFE\"")
-            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_START//", "<!--//LIFETIMELIC_START//-->")
-            pluginXmlStr = pluginXmlStr.replace("//LIFETIMELIC_END//-->", "<!--//LIFETIMELIC_END//-->")
-            FileUtils.delete(pluginXmlFile)
-            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-        }
-    }
-    register("restorePluginInfoFromLifetimeInPluginXml") {
-        doLast {
-            var pluginXmlStr = pluginXmlFile.readText()
-            pluginXmlStr = pluginXmlStr.replace("<id>lermitage.extra.icons.lifetime</id>", "<id>lermitage.intellij.extra.icons</id>")
-            pluginXmlStr = pluginXmlStr.replace("<name>Extra Icons Lifetime</name>", "<name>Extra Icons</name>")
-            pluginXmlStr = pluginXmlStr.replace("<product-descriptor code=\"PEXTRAICONSLIFE\"", "<product-descriptor code=\"PEXTRAICONS\"")
-            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_START//-->", "<!--//LIFETIMELIC_START//")
-            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_END//-->", "//LIFETIMELIC_END//-->")
-            FileUtils.delete(pluginXmlFile)
-            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-        }
-    }
-    register("renameDistributionLifetimeLicense") {
-        doLast {
-            val baseName = "build/distributions/Extra Icons-$version"
-            val noLicPluginFile = projectDir.resolve("${baseName}-lifetime.zip")
-            val originalPluginFile = projectDir.resolve("${baseName}.zip")
-            noLicPluginFile.delete()
-            if (originalPluginFile.exists()) {
-                FileUtils.moveFile(projectDir.resolve("${baseName}.zip"), noLicPluginFile)
             }
         }
     }
@@ -364,19 +363,6 @@ tasks {
         enabled = false
     }
     patchPluginXml {
-        when (pluginLicenseType) {
-            "free" -> {
-                dependsOn("removeLicenseRestrictionFromPluginXml")
-            }
-
-            "lifetime" -> {
-                dependsOn("renamePluginInfoToLifetimeInPluginXml", "verifyProductDescriptor")
-            }
-
-            else -> {
-                dependsOn("verifyProductDescriptor")
-            }
-        }
         changeNotes.set(provider {
             with(changelog) {
                 renderItem(getLatest(), Changelog.OutputType.HTML)
