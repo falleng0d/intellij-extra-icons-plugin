@@ -3,9 +3,7 @@
     <name>MTJR Extra Icons</name>
     <version>REPLACED_BY_GRADLE</version>
     <vendor email="mateus@matj.dev" url="https://github.com/falleng0d">MATEUS_JUNIOR</vendor>
-    <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
     <!-- IMPORTANT reminder: change the release-date and release-version on major version changes only -->
-    <!--//FREE_LIC//<product-descriptor code="PEXTRAICONS" release-date="20240102" release-version="20241"/>//FREE_LIC//-->
 
     <description><![CDATA[
       <ul>
@@ -15,8 +13,7 @@
         <li>You can also register <b>your own icons</b> in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
         <li>You can import and export icons from external files. This also means you can easily share icon themes with friends. You can also download online <b>icon packs</b> (example: <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#filesolduitheme">restore the old file icons when using the new UI</a>).</li>
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
-        <li>For questions about the plugin licensing models, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
-        <li>JetBrains <b>Gateway</b> support is limited. Gateway may fail to register licenses for third-party paid plugins (like Extra Icons), and it may not render some settings GUI forms correctly. Unfortunately, these issues are on the JetBrains side. Installing the plugin on the <i>host</i> and/or <i>client</i> sides can help. As a workaround for licensing issues, you can still build the plugin by yourself and remove the license requirement. The plugin is still free (MIT) and open source. I ask for a modest retribution only if you get the plugin from the marketplace, which, I think, is a good way to support my work. Thank you.</li>
+        <li>The plugin is fully open source and all features are available in this build.</li>
       </ul>
       📢 If you want to speed up the resolution of a few problems on JetBrains side affecting this plugin, or help plugin developers, please consider up-voting these YouTrack issues:
       <ul>

@@ -66,27 +66,6 @@ public class HintNotificationsProjectActivity implements ProjectActivity {
             settingsIDEService.setPluginIsConfigurableHintNotifDisplayed(true);
         }
 
-        // TODO uncomment once Lifetime licences are available
-        /*if (!IJUtils.isExtraIconsLifetimeLoaded()) {
-            try {
-                if (!settingsIDEService.getLifetimeLicIntroHintNotifDisplayed() || alwaysShowNotifications) {
-                    Notification notif = new Notification(Globals.PLUGIN_GROUP_DISPLAY_ID,
-                        i18n.getString("notif.tips.lifetime.lic.intro.title"),
-                        i18n.getString("notif.tips.lifetime.lic.intro.content"),
-                        NotificationType.INFORMATION);
-                    notif.addAction(new NotificationAction(i18n.getString("notif.tips.lifetime.lic.intro.btn")) {
-                        @Override
-                        public void actionPerformed(@NotNull AnActionEvent e, @NotNull Notification notification) {
-                            BrowserUtil.browse("https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md#how-to-get-a-lifetime-license");
-                        }
-                    });
-                    Notifications.Bus.notify(notif);
-                }
-            } finally {
-                settingsIDEService.setLifetimeLicIntroHintNotifDisplayed(true);
-            }
-        }*/
-
         if (IJUtils.isIconViewer2Loaded()) {
             try {
                 if (!settingsIDEService.getIconviewerShouldRenderSVGHintNotifDisplayed() || alwaysShowNotifications) {

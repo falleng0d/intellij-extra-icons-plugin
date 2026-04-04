@@ -41,7 +41,6 @@ val pluginDownloadIdeaSources: String by project
 val pluginVersion: String by project
 val pluginJavaVersion: String by project
 val testLoggerStyle: String by project
-val pluginLicenseType: String by project
 val pluginLanguage: String by project
 val pluginCountry: String by project
 val pluginEnableDebugLogs: String by project
@@ -123,91 +122,6 @@ testlogger {
 }
 
 tasks {
-    register("verifyProductDescriptor") {
-        // Ensure generated plugin requires a paid license
-        doLast {
-            val pluginXmlStr = pluginXmlFile.readText()
-            if (!pluginXmlStr.contains("<product-descriptor")) {
-                throw GradleException("plugin.xml: Product Descriptor is missing")
-            }
-            if (pluginXmlStr.contains("//FREE_LIC//")) {
-                throw GradleException("plugin.xml: Product Descriptor is commented")
-            }
-        }
-    }
-
-    register("removeLicenseRestrictionFromPluginXml") {
-        // Remove paid license requirement
-        doLast {
-            logger.warn("----------------------------------------------------------------")
-            logger.warn("/!\\ Will build a plugin which doesn't ask for a paid license /!\\")
-            logger.warn("----------------------------------------------------------------")
-            var pluginXmlStr = pluginXmlFile.readText()
-            val paidLicenceBlockRegex = "<product-descriptor code=\"\\w+\" release-date=\"\\d+\" release-version=\"\\d+\"/>".toRegex()
-            val paidLicenceBlockStr = paidLicenceBlockRegex.find(pluginXmlStr)!!.value
-            pluginXmlStr = pluginXmlStr.replace(paidLicenceBlockStr, "<!--//FREE_LIC//${paidLicenceBlockStr}//FREE_LIC//-->")
-            FileUtils.delete(pluginXmlFile)
-            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-        }
-    }
-    register("restoreLicenseRestrictionFromPluginXml") {
-        // Restore paid license requirement
-        doLast {
-            var pluginXmlStr = pluginXmlFile.readText()
-            pluginXmlStr = pluginXmlStr.replace("<!--//FREE_LIC//", "").replace("//FREE_LIC//-->", "")
-            FileUtils.delete(pluginXmlFile)
-            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-        }
-    }
-    register("renameDistributionNoLicense") {
-        // Rename generated plugin file to mention the fact that no paid license is needed
-        doLast {
-            val baseName = "build/distributions/Extra Icons-$version"
-            val noLicPluginFile = projectDir.resolve("${baseName}-no-license.zip")
-            val originalPluginFile = projectDir.resolve("${baseName}.zip")
-            noLicPluginFile.delete()
-            if (originalPluginFile.exists()) {
-                FileUtils.moveFile(projectDir.resolve("${baseName}.zip"), noLicPluginFile)
-                System.setProperty("pluginFilePath", noLicPluginFile.absolutePath)
-            }
-        }
-    }
-    register("renamePluginInfoToLifetimeInPluginXml") {
-        doLast {
-            var pluginXmlStr = pluginXmlFile.readText()
-            pluginXmlStr = pluginXmlStr.replace("<id>lermitage.intellij.extra.icons</id>", "<id>lermitage.extra.icons.lifetime</id>")
-            pluginXmlStr = pluginXmlStr.replace("<name>Extra Icons</name>", "<name>Extra Icons Lifetime</name>")
-            pluginXmlStr = pluginXmlStr.replace("<product-descriptor code=\"PEXTRAICONS\"", "<product-descriptor code=\"PEXTRAICONSLIFE\"")
-            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_START//", "<!--//LIFETIMELIC_START//-->")
-            pluginXmlStr = pluginXmlStr.replace("//LIFETIMELIC_END//-->", "<!--//LIFETIMELIC_END//-->")
-            FileUtils.delete(pluginXmlFile)
-            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-        }
-    }
-    register("restorePluginInfoFromLifetimeInPluginXml") {
-        doLast {
-            var pluginXmlStr = pluginXmlFile.readText()
-            pluginXmlStr = pluginXmlStr.replace("<id>lermitage.extra.icons.lifetime</id>", "<id>lermitage.intellij.extra.icons</id>")
-            pluginXmlStr = pluginXmlStr.replace("<name>Extra Icons Lifetime</name>", "<name>Extra Icons</name>")
-            pluginXmlStr = pluginXmlStr.replace("<product-descriptor code=\"PEXTRAICONSLIFE\"", "<product-descriptor code=\"PEXTRAICONS\"")
-            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_START//-->", "<!--//LIFETIMELIC_START//")
-            pluginXmlStr = pluginXmlStr.replace("<!--//LIFETIMELIC_END//-->", "//LIFETIMELIC_END//-->")
-            FileUtils.delete(pluginXmlFile)
-            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-        }
-    }
-    register("renameDistributionLifetimeLicense") {
-        doLast {
-            val baseName = "build/distributions/Extra Icons-$version"
-            val noLicPluginFile = projectDir.resolve("${baseName}-lifetime.zip")
-            val originalPluginFile = projectDir.resolve("${baseName}.zip")
-            noLicPluginFile.delete()
-            if (originalPluginFile.exists()) {
-                FileUtils.moveFile(projectDir.resolve("${baseName}.zip"), noLicPluginFile)
-                System.setProperty("pluginFilePath", noLicPluginFile.absolutePath)
-            }
-        }
-    }
     register("showGeneratedPlugin") {
         doLast {
             logger.quiet("--------------------------------------------------\n" +
@@ -311,15 +225,7 @@ tasks {
         })
     }
     buildPlugin {
-        when (pluginLicenseType) {
-            "free" -> {
-                finalizedBy("restoreLicenseRestrictionFromPluginXml", "renameDistributionNoLicense", "installPlugin")
-            }
-
-            "lifetime" -> {
-                finalizedBy("restorePluginInfoFromLifetimeInPluginXml", "renameDistributionLifetimeLicense", "installPlugin")
-            }
-        }
+        finalizedBy("installPlugin")
     }
     publishPlugin {
         token.set(System.getenv("JLE_IJ_PLUGINS_PUBLISH_TOKEN"))

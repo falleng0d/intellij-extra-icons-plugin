@@ -53,7 +53,7 @@ Please see [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and [GitHub open issues](https://g
 ## License
 
 MIT License. In other words, you can do what you want: this project is entirely OpenSource, Free and Gratis.  
-You only have to pay a subscription if you want to support my work by using the version that is published to the JetBrains marketplace. If you don't want to (or can't) support my work, you can still use old releases (up to 1.69), or package and install your own release for free. If you have any question, please see the [license FAQ](docs/LICENSE_FAQ.md).
+All features are available in this open-source build.
 
 ## Contributors
 

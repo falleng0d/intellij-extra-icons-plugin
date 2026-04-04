@@ -20,7 +20,6 @@ import com.intellij.ui.NewUI;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
-import lermitage.intellij.extra.icons.lic.ExtraIconsLicenseStatus;
 import lermitage.intellij.extra.icons.services.FacetsFinderService;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
@@ -231,9 +230,6 @@ public abstract class BaseIconProvider
 
     @Nullable
     private Icon getIcon(@NotNull File file, @NotNull FileType fileType, @Nullable Project project) {
-        if (!ExtraIconsLicenseStatus.isLicenseActivated()) {
-            return null;
-        }
         nbGetIcon++;
         try {
             if (!ProjectUtils.isProjectAlive(project)) {
