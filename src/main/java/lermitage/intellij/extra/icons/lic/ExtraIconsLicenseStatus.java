@@ -4,9 +4,15 @@ package lermitage.intellij.extra.icons.lic;
 
 public class ExtraIconsLicenseStatus {
 
+    private static boolean licenseActivated = true;
+
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static synchronized boolean isLicenseActivated() {
-        return true;
+        return licenseActivated;
+    }
+
+    public static synchronized void setLicenseActivated(boolean activated) {
+        licenseActivated = activated;
     }
 
 }

@@ -4,6 +4,8 @@ package lermitage.intellij.extra.icons.lic;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 @SuppressWarnings("HardCodedStringLiteral")
 public enum ExtraIconsPluginType {
 
@@ -31,7 +33,11 @@ public enum ExtraIconsPluginType {
     }
 
     public boolean isRequiresLicense() {
-        return false;
+        return requiresLicense;
+    }
+
+    public static @NotNull List<ExtraIconsPluginType> getFindableTypes() {
+        return List.of(SUBSCRIPTION, LIFETIME, FREE);
     }
 
     @Override
