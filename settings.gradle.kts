@@ -1,3 +1,12 @@
+pluginManagement {
+    includeBuild("../shared-plugin-installer")
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 rootProject.name = "ij-extra-icons"
 
 // uncomment to use gradle-intellij-plugin snapshots

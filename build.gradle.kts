@@ -1,4 +1,5 @@
 import com.adarshr.gradle.testlogger.theme.ThemeType
+import com.matj.gradle.PluginInstallerExtension
 import com.github.benmanes.gradle.versions.reporter.PlainTextReporter
 import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
@@ -23,13 +24,14 @@ fun environment(key: String) = providers.environmentVariable(key)
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.16.1" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "1.17.4" // https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.changelog") version "2.2.0" // https://github.com/JetBrains/gradle-changelog-plugin
     id("com.github.ben-manes.versions") version "0.50.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "4.0.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.palantir.git-version") version "3.0.0" // https://github.com/palantir/gradle-git-version
     id("com.github.andygoossens.modernizer") version "1.9.0" // https://github.com/andygoossens/gradle-modernizer-plugin
     id("biz.lermitage.oga") version "1.1.1" // https://github.com/jonathanlermitage/oga-gradle-plugin
+    id("com.matj.plugin-installer")
 }
 
 val pluginXmlFile = projectDir.resolve("src/main/resources/META-INF/plugin.xml")
@@ -62,6 +64,11 @@ version = if (pluginVersion == "auto") {
 logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $version")
 
 group = "lermitage.intellij.extra.icons"
+
+extensions.configure<PluginInstallerExtension>("pluginInstaller") {
+    pluginDirectoryName.set("Extra Icons")
+    artifactPath.set(providers.systemProperty("pluginFilePath").orElse(""))
+}
 
 repositories {
     mavenCentral()
@@ -201,72 +208,6 @@ tasks {
             }
         }
     }
-    register("installPlugin") {
-        doLast {
-            val pluginFilePath = System.getProperty("pluginFilePath")
-            var pluginFileName = pluginFilePath?.substringAfterLast(" /")
-            var pluginName = "Extra Icons"
-
-            if (pluginFilePath == null) {
-                println("[ERROR] No plugin file specified")
-                return@doLast
-            }
-
-            val envFile = "../.env"
-
-            // Load environment file if it exists
-            val envFileObj = file(envFile)
-            var envMap = mutableMapOf<String, String>()
-            if (envFileObj.exists()) {
-                envFileObj.readLines().forEach {
-                    if (it.isNotEmpty() && !it.startsWith("#")) {
-                        val pos = it.indexOf("=")
-                        val key = it.substring(0, pos)
-                        val value = it.substring(pos + 1)
-                        // check if the key is already set
-                        if (environment(key).getOrNull() == null) {
-                            envMap[key] = value
-                        }
-                    }
-                }
-            }
-
-            val installLocationsCopy = envMap["INSTALL_LOCATIONS"] ?: environment("INSTALL_LOCATIONS").getOrNull()
-            if (installLocationsCopy == null) {
-                println("[WARNING] No install locations specified")
-                return@doLast
-            }
-
-            val locationsList: List<String> = installLocationsCopy.split(",")
-
-            // eg. build/distributions/Plugin-2000.10.1.100.zip
-            val pluginZip: File = file(pluginFilePath)
-
-            locationsList.forEach { location ->
-                // extract installation name (eg  C:\\Users\\...\\JetBrains\\Rider2023.2\\plugins
-                // -> Rider2023.2)
-                val separator = if (location.contains("/")) "/" else "\\"
-                val installationName = location.split(separator).dropLast(1).last()
-
-                // delete plugin folder
-                val existingInstallation = file("$location/$pluginName")
-                if (existingInstallation.exists()) {
-                    if (!existingInstallation.deleteRecursively()) {
-                        println("[ERROR] Skipping $installationName. Failed to delete existing installation")
-                        return@forEach
-                    }
-                }
-
-                copy {
-                    from(zipTree(pluginZip))
-                    into(location)
-                }
-
-                println("Plugin installed to $installationName")
-            }
-        }
-    }
-
     register("showGeneratedPlugin") {
         doLast {
             logger.quiet("--------------------------------------------------\n" +
